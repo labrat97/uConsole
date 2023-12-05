@@ -53,8 +53,9 @@ sudo cp arch/arm64/boot/Image.gz /boot/kernel8.img
 Next, you need to make sure that the correct modules are loaded when booting. First, find the tag of the kernel modules that you just installed with `ls /lib/modules`. Then do the following:
 
 ```
+sudo cp .config /boot/config-[kernel version found above]
 sudo update-initramfs -d -k 5.10.17-v8+
-sudo update-initramfs -c -k [kernel version found above.]
+sudo update-initramfs -c -k [kernel version found above]
 ```
 
 In order to use compiled kernel8.img with CM4 in uConsole, we have to setup a config.txt. This should already be in the /boot partition, but it you should remove the `[pi4]` line as (if I'm not mistaken) the definition has changed and the specification is redundant.
